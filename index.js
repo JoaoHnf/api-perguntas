@@ -23,7 +23,7 @@ connection.connect((err) => {
 app.get('/', (req, res) => {    
     res.send('Alô mundo!');    
 });
-
+// Armazena perguntas
 app.get('/perguntas', (req, res) => {
   connection.query('SELECT * FROM perguntas', (err, rows) => {
     if (err) throw err;
@@ -41,6 +41,7 @@ app.get('/perguntas', (req, res) => {
   });
 });
 
+// Armazena perguntas
 app.get('/perguntas_administracao', (req, res) => {
   connection.query('SELECT * FROM perguntas', (err, rows) => {
     if (err) throw err;
@@ -61,6 +62,7 @@ app.get('/perguntas_administracao', (req, res) => {
   });
 });
 
+//Armazena usuarios
 app.get('/usuarios', (req, res) => {
     connection.query('SELECT * FROM usuarios', (err, rows) => {
       if (err) throw err;
@@ -68,6 +70,7 @@ app.get('/usuarios', (req, res) => {
     });
 });
 
+//Armazena login
 app.post('/login', (req, res) => {
   const login = req.body.login;
   const senha = req.body.senha;
@@ -81,6 +84,7 @@ app.post('/login', (req, res) => {
   });
 });
 
+//Armazena os ids
 app.get('/perguntas/:id', (req, res) => {
     const id = req.params.id;
     connection.query('SELECT * FROM perguntas WHERE id = ?', [id], (err, rows) => {
